@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meat Meal AI - Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <img src="chat.gif" class="center-gif" alt="Chat GIF">
+        <img src="logo.jpg" alt="Meat Meal AI Logo" class="logo" align="center">
+        <h1>Meat Meal AI</h1>
+        <select id="language-select">
+            
+        </select>
+    </header>
+
+    <div class="container">
+        <div class="chat-section">
+            <div id="chat-box" class="chat-box"></div>
+            <div class="input-section">
+                <input type="text" id="user-input" placeholder="Ask about any meal...">
+                <button id="send-btn">Send</button>
+                <button id="stop-btn">Stop</button>
+                <button id="regenerate-btn">Regenerate</button>
+            </div>
+        </div>
+        
+        <div class="video-section">
+            <iframe id="video-frame" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

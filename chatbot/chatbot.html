@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Food Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Meat Meal AI</h1>
+        <select id="language-select">
+            <option value="en">English</option>
+            <option value="hi">Hindi</option>
+            <option value="te">Telugu</option>
+            <option value="kn">Kannada</option>
+            <option value="ml">Malayalam</option>
+            <option value="ta">Tamil</option>
+        </select>
+    </header>
+    <main>
+        <div id="chat-container">
+            <div id="chat-box"></div>
+            <input type="text" id="user-input" placeholder="Ask for a recipe...">
+            <div id="chat-buttons">
+                <button id="send-btn">Send</button>
+                <button id="stop-btn">Stop</button>
+                <button id="regenerate-btn">Regenerate</button>
+            </div>
+        </div>
+        <div id="video-container">
+            <iframe id="video-frame" frameborder="0" allowfullscreen></iframe>
+        </div>
+    </main>
+    <script>
+        // API Key
+        const YOUTUBE_API_KEY = "AIzaSyBi6BS_DwRefSvBtE6KuFJHaU5bugn7CaY";
+        
+        // Reliable Free Food API
+        const FOOD_API = "https://www.themealdb.com/api/json/v1/1/search.php?s=";
+        
+        // Supported Languages
+        const LANGUAGES = {
+            en: "English",
+            hi: "Hindi",
+            te: "Telugu",
+            kn: "Kannada",
+            ml: "Malayalam",
+            ta: "Tamil"
+        };
+        
+        // UI Elements
+        const chatBox = document.getElementById("chat-box");
+        const inputField = document.getElementById("user-input");
+        const sendButton = document.getElementById("send-btn");
+        const stopButton = document.getElementById("stop-btn");
+        const regenerateButton = document.getElementById("regenerate-btn");
+        const languageSelect = document.getElementById("language-select");
+        
+        // Send user message
+        function sendMessage() {
+            const message = inputField.value.trim();
+            if (message === "") return;
+        
+            displayMessage(message, "user-message");
+            fetchFoodInfo(message);
+            inputField.value = "";
+        }
+        
+        // Display messages
+        function displayMessage(text, className) {
+            let messageDiv = document.createElement("div");
+            messageDiv.className = className;
+            messageDiv.textContent = text;
+            chatBox.appendChild(messageDiv);
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+        
+        // Fetch meal details
+        async function fetchFoodInfo(query) {
+            displayMessage("🔍 Searching for recipes...", "bot-message");
+            try {
+                let response = await fetch(FOOD_API + query);
+                let data = await response.json();
+                if (data.meals) {
+                    displayRecipeDetails(data.meals[0]);
+                    fetchYouTubeVideo(query);
+                } else {
+                    displayMessage("❌ No recipes found. Try another search.", "bot-message");
+                }
+            } catch (error) {
+                console.error("API Fetch Error:", error);
+            }
+        }
+        
+        // Display recipe details
+        function displayRecipeDetails(recipe) {
+            let recipeMessage = `🍲 **${recipe.strMeal}**\n`;
+            recipeMessage += `🔗 [Full Recipe](${recipe.strSource || '#'})\n`;
+            recipeMessage += `🥣 Ingredients:\n`;
+            for (let i = 1; i <= 20; i++) {
+                if (recipe[`strIngredient${i}`]) {
+                    recipeMessage += `- ${recipe[`strIngredient${i}`]} (${recipe[`strMeasure${i}`] || ""})\n`;
+                }
+            }
+            displayMessage(recipeMessage, "bot-message");
+        }
+        
+        // Fetch YouTube Video
+        async function fetchYouTubeVideo(query) {
+            try {
+                let response = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${query}+recipe&type=video&key=${YOUTUBE_API_KEY}&maxResults=5`);
+                let data = await response.json();
+                if (data.items.length > 0) {
+                    document.getElementById("video-frame").src = `https://www.youtube.com/embed/${data.items[0].id.videoId}`;
+                } else {
+                    displayMessage("❌ No video found.", "bot-message");
+                }
+            } catch (error) {
+                console.error("YouTube API Error:", error);
+            }
+        }
+        
+        // Event Listeners
+        sendButton.addEventListener("click", sendMessage);
+        inputField.addEventListener("keypress", (event) => {
+            if (event.key === "Enter") sendMessage();
+        });
+        stopButton.addEventListener("click", () => {
+            displayMessage("⏹️ Chat stopped.", "bot-message");
+        });
+        regenerateButton.addEventListener("click", sendMessage);
+    </script>
+</body>
+</html>

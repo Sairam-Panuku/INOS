@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INOS The Meal Recommender</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <h1 class="title">🍽️ INOS The Meal Recommender 🍲</h1>
+
+    <!-- Center GIF -->
+    <img src="food.gif" class="center-gif" alt="Food GIF">
+
+
+    <div class="container">
+        <!-- Left Section for User Input -->
+        <div class="left-section">
+            <h2>📝 Select Gender, Age & Disease</h2>
+
+            <div class="input-row">
+                <label for="gender">👫 Gender</label>
+                <select id="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+            </div>
+
+            <div class="input-row">
+                <label for="age">🎂 Age</label>
+                <input type="number" id="age" min="1" max="100" placeholder="Enter Age">
+                <span class="error-message" id="age-error"></span> <!-- Error message here -->
+            </div>
+
+            <div class="input-row">
+                <label for="disease">💊 Disease</label>
+                <input type="text" id="disease" list="disease-options" placeholder="Enter Disease">
+                <datalist id="disease-options"></datalist>
+                <span class="error-message" id="disease-error"></span> <!-- Error message here -->
+            </div>
+
+            <div class="button-row">
+                <button onclick="getMealRecommendation()">🍽️ Get Meal</button>
+                <button onclick="getMealRecommendation()" class="regen-btn">🔄 Regenerate</button>
+            </div>
+        </div>
+
+        
+<div class="right-section">
+    <h2>🍛 Meal Recommendation</h2>
+
+    <!-- Waiting message before meals appear -->
+    <div id="wait-message" style="display: none; font-size: 1.5rem; color: yellow; text-align: center;">
+        Please wait, your meal is ready...
+    </div>
+
+    <!-- Meal Container -->
+    <div id="meal-container" style="display: none;">
+        <p><strong>🌅 Morning Meal:</strong> <span class="meal-box" id="morning-meal">-</span></p>
+        <p><strong>🌞 Afternoon Meal:</strong> <span class="meal-box" id="afternoon-meal">-</span></p>
+        <p><strong>🌙 Night Meal:</strong> <span class="meal-box" id="night-meal">-</span></p>
+    </div>
+</div>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+# Ignore Python virtual environment folder
+.venv/
+
+# Ignore asset folders
+assets/
+cdn.b12.io/
+
+# Ignore CSV files
+*.csv
+
+# Ignore common unwanted files/folders (optional but recommended)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Ignore any other unwanted directories
+code.jquery.com/
+recaptcha/
+static/
+www.google.com/

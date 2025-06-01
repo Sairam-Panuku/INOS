@@ -1,0 +1,212 @@
+/* General Styles */
+body {
+    background: url('background.jpg') no-repeat center top;
+    background-size: 100% 100%;
+    background-color: black;
+    font-family: Arial, sans-serif;
+    color: white;
+    background-attachment: fixed;
+    text-align: center;
+}
+
+/* Header */
+/* Centering Header Content */
+header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px; /* Adds space between the elements */
+    padding: 20px 0;
+    background: none;
+    margin-top: -20px; /* Remove background if needed */
+}
+
+/* Styling for Logo */
+.logo {
+    width: 80px; /* Adjust logo size */
+    height: auto;
+}
+
+h1 {
+    font-size: 48px; /* Larger font size */
+    color: hsl(218, 93%, 57%);  /* Red color */
+    text-shadow: 
+        3px 3px 5px rgb(245, 241, 241), /* Shadow for 3D effect */
+        -3px -3px 5px rgba(28, 1, 1, 0.6); /* Shadow for contrast */
+    font-family: "palatino" ; /* A different, more dynamic font */
+    margin: 0;
+    transform: perspective(200px) rotateX(15deg); /* 3D rotation */
+    letter-spacing: 2px; /* Slight space between letters for a clearer 3D effect */
+}
+
+/* Styling for Language Selector */
+#language-select {
+    padding: 8px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #7465f7;
+    background-color:rgba(231, 181, 226, 0.993); /* Default (Red for Disease) */
+
+}
+
+/* Main Container */
+/* Main Container */
+
+/* Chat Box */
+.chat-box {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+    height: 70vh;
+    overflow-y: auto;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    text-align: left;
+    margin-left: 0px;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    justify-content: space-between;
+    gap : 100px; /* Space between chat and video */
+    width: 100%; /* Make it full width */
+    max-width: 1400px; /* Increase max width */
+    margin: auto;
+    margin-left:50 px; ;
+    padding: 20px;
+    margin-top: -50px;
+}
+
+/* Chat Section */
+.chat-section {
+    width: 45%;
+    margin-left: 0px; 
+}
+
+/* Video Section */
+.video-section {
+    width: 45%;
+    height: 70vh;
+    margin-left: auto; /* Push to the right */
+    margin-right: 20px;
+    margin-top: -45px ; /* Add more right margin to move further */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* Video Frame */
+iframe {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+
+/* Input Section */
+.input-section {
+    display: flex;
+    gap: 5px;
+    margin-top: 10px;
+}
+
+input {
+    flex-grow: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Bot and User Message Styles */
+.bot-message {
+    background-color: rgba(0, 123, 255, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.user-message {
+    background-color: rgba(255, 236, 179, 0.2);
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Prefixes for Messages */
+.user-message::before {
+    content: "👤 You: ";
+    font-weight: bold;
+}
+
+.bot-message::before {
+    content: "🤖 Bot: ";
+    font-weight: bold;
+}
+
+/* Center GIF */
+.center-gif {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+    animation: pulse 2s infinite ease-in-out;
+    pointer-events: none;
+}
+
+/* Pulse Animation */
+@keyframes pulse {
+    0% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+    50% { box-shadow: 0 0 20px rgba(255, 255, 255, 0.8); }
+    100% { box-shadow: 0 0 10px rgba(255, 255, 255, 0.5); }
+}
+
+/* Responsive Font Adjustments */
+@media (max-width: 768px) {
+    .chat-box {
+        font-size: 12px;
+    }
+
+    iframe {
+        height: 40vh;
+    }
+}
+
+html, body {
+    overflow: hidden;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.container {
+    width: 68%;
+    max-width: 880px;
+    height: 90vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
