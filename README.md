@@ -1,8 +1,4 @@
-Absolutely! Here's the **complete `README.md`** – just copy and paste this into your `README.md` file in VS Code.
 
----
-
-```markdown
 # INOS 🍽️  
 **Intelligent Nutrient Optimization System**
 
@@ -33,26 +29,8 @@ INOS is a smart food recommendation and chatbot system that provides personalize
 
 ---
 
-## 📁 Folder Structure
 
-```
 
-INOS/
-├── app.py                # Flask backend
-├── config.py             # Configuration (API keys, etc.)
-├── model.py              # ML/logic modules
-├── database.db           # SQLite database
-├── index.html            # Main UI
-├── index-2.html          # Alternate UI version
-├── chatbot/              # Chatbot HTML, JS, CSS
-├── chat/                 # Chatbot backend code
-├── food/                 # JSON files for meals
-├── Screenshot/           # Screenshots for README
-├── inos.mp4              # Demo video
-├── README.md             # Project documentation
-└── .gitignore            # Git ignore rules
-
-````
 
 ---
 
@@ -129,7 +107,7 @@ Now open your browser and go to:
 ## 👨‍💻 Author
 
 **Sairam Panuku**
-GitHub: [@Sairam-Panuku]
+GitHub: @Sairam-Panuku
 
 ---
 
